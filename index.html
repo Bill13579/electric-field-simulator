@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>Electric Field Simulator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="./assets/neutral.png">
+        <script src="lib.js"></script>
+        <script src="controls.js"></script>
+        <script src="sketch.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://unpkg.com/mathjs@5.10.3/dist/math.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="index.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.js"></script>
+    </head>
+    <body>
+        <div id="canvas-container"></div>
+        <div id="controls">
+            <span id="name">Electric Field Simulator</span>
+            <a id="hide-controls" class="waves-effect btn-flat"><i class="material-icons icon" aria-hidden="true">remove</i></a>
+            <div id="options">
+                <div id="new-charge-type" class="charge-selection option">
+                    <span class="label">New Charge Type</span>
+                    <div class="charge-selection-options">
+                        <img class="charge-selection-option" src="./assets/positive.png" alt="Proton" data-type="1" style="color:red">
+                        <img class="charge-selection-option" src="./assets/negative.png" alt="Electron" data-type="-1" style="color: blue">
+                        <img class="charge-selection-option" src="./assets/neutral.png" alt="Neutron" data-type="0" style="color: green">
+                    </div>
+                </div>
+                <div id="k-selector-container" class="option">
+                    <span class="label">Coulomb's Law Constant</span>
+                    <div id="k-selector" class="input-field col s12">
+                        <select id="k">
+                            <option value="8.9875517873681764e+9" selected>Vacuum - 9E9</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="charge-unit-selector-container" class="option">
+                    <span class="label">Charge Unit</span>
+                    <p id="charge-unit-selector" class="range-field">
+                        <input type="range" id="charge-unit" min="-9" max="3" step="1" />
+                    </p>
+                    <span id="charge-unit-display" class="label"></span>
+                </div>
+                <div id="stride-selector-container" class="option">
+                    <span class="label">Test Charge Stride</span>
+                    <div id="stride-selector" class="input-field col s12">
+                        <input id="stride" type="number" class="validate">
+                    </div>
+                </div>
+            </div>
+            <a id="reset-btn" class="waves-effect waves-light btn"><i class="material-icons right">refresh</i>Reset</a>
+        </div>
+    </body>
+</html>
