@@ -23,14 +23,23 @@ html, body {
     -webkit-transition: width 0.5s, height 0.5s;
     transition: width 0.5s, height 0.5s;
 }
+#header {
+    display: inline-block;
+}
 #options {
+    display: block;
     margin-top: 20px;
     margin-bottom: 10px;
 }
 #name {
+    display: block;
     font-size: 1.4vw;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
+    user-select: none;
+}
+#author {
+    font-size: 0.8vw;
     user-select: none;
 }
 @media only screen and (max-width: 768px) {
@@ -56,6 +65,7 @@ html, body {
     font-size: 20px;
     vertical-align: middle;
     margin-right: 10px;
+    user-select: none;
 }
 .charge-selection {
     vertical-align: middle;
@@ -74,6 +84,7 @@ html, body {
     height: calc(100% - 10px);
     margin-right: 6px;
     border-radius: 100%;
+    user-select: none;
 }
 .charge-selection-current-option {
     box-shadow: 0 0 5px;

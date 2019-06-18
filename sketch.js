@@ -2,7 +2,7 @@ let grid;
 let environment;
 
 const MARGIN = [2, 2, 2, 2] // left, top, right, bottom
-let STRIDE = 40
+let STRIDE = 50
 
 let CHARGE_UNIT = 1e-6
 let DISTANCE_UNIT = 1e-2
@@ -112,6 +112,10 @@ function drawGrid() {
 
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight)
+    STRIDE = stride.value
+    let width = Math.floor((windowWidth - MARGIN[0] - MARGIN[2]) / STRIDE)
+    let height = Math.floor((windowHeight - MARGIN[1] - MARGIN[3]) / STRIDE)
+    grid.reshape(width, height)
 }
 
 function mousePressedC() {
@@ -119,25 +123,11 @@ function mousePressedC() {
     y = Math.round((mouseY - STRIDE / 2 - MARGIN[1] - MARGIN[3]) / STRIDE)
     point = grid.point(x, y)
     point.charge += 1*/
-    if (UNDO) {
+    if (mouseButton === LEFT) {
+        if (UNDO) {
 
-    } else {
-        environment.addCharge(new L.charge(mouseX2posX(), mouseY2posY(), NEW_CHARGE_TYPE))
-    }
-}
-
-function keyPressed() {
-    switch (keyCode) {
-        case OPTION:
-            if (NEW_CHARGE_TYPE === CHARGE_UNIT) NEW_CHARGE_TYPE *= -1
-            else if (NEW_CHARGE_TYPE === -CHARGE_UNIT) NEW_CHARGE_TYPE = 0
-            else if (NEW_CHARGE_TYPE === 0) NEW_CHARGE_TYPE = CHARGE_UNIT
-            break
-        case UP_ARROW:
-            NEW_CHARGE_TYPE *= 10
-            break
-        case DOWN_ARROW:
-            NEW_CHARGE_TYPE /= 10
-            break
+        } else {
+            environment.addCharge(new L.charge(mouseX2posX(), mouseY2posY(), NEW_CHARGE_TYPE))
+        }
     }
 }
